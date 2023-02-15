@@ -10,8 +10,8 @@ resource "vault_database_secrets_mount" "default" {
     port             = var.vault_cassandra_port
     plugin_name      = "cassandra-database-plugin"
     tls              = var.vault_cassandra_tls
-    insecure_tls     = var.vault_cassandra_insecure_tls
-    pem_bundle       = var.vault_cassandra_pem_bundle
+    # insecure_tls     = var.vault_cassandra_insecure_tls
+    # pem_bundle       = var.vault_cassandra_pem_bundle
     protocol_version = var.vault_cassandra_protocol_version
     connect_timeout  = var.vault_cassandra_connect_timeout
   }
