@@ -11,7 +11,7 @@ variable "vault_cassandra_path" {
 
 variable "vault_cassandra_hosts" {
   description = "The hosts to connect to."
-  default     = ["localhost"]
+  default     = ["cassandra"]
   type        = list(string)
 }
 
