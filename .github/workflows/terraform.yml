@@ -39,8 +39,11 @@ jobs:
         with:
           action: validate
           directory: ./examples/${{ matrix.config.name }}
-      - name: Wait 16 seconds for service containers to be ready
-        run: sleep 16
+      - name: Wait up to 16 seconds for service container cassandra to be ready
+        uses: ifaxity/wait-on-action
+        with:
+          resource: tcp://cassandra:7000
+          timeout: 16000
       - name: terraform plan
         uses: robertdebock/terraform-action@1.1.2
         with:
