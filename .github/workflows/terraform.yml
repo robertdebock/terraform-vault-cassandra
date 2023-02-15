@@ -25,8 +25,8 @@ jobs:
       cassandra:
         image: cassandra:latest
         ports:
-          - 7000
-          - 7001
+          - 7000:7000
+          - 7001:7001
     steps:
       - name: checkout
         uses: actions/checkout@v3
