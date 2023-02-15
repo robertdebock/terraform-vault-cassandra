@@ -15,7 +15,7 @@ docker run --name vault --publish 8200:8200 --env "VAULT_DEV_ROOT_TOKEN_ID=simpl
 ### Cassandra
 
 ```shell
-docker run --name cassandra --publish 7000:7000 --detach cassandra
+docker run --name cassandra --publish 9042:9042 --detach cassandra
 ```
 
 ### Terraform settings
@@ -23,6 +23,7 @@ docker run --name cassandra --publish 7000:7000 --detach cassandra
 Please set these variable that Terraform will use.
 
 ```shell
-export VAULT_ADDR="http://vault:8200"
+export VAULT_ADDR="http://localhost:8200"
 export VAULT_TOKEN="simple"
+export TF_VAR_vault_cassandra_hosts="[\"localhost\"]"
 ```
