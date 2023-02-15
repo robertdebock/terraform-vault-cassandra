@@ -27,6 +27,7 @@ jobs:
         ports:
           - 7000:7000
           - 7001:7001
+        options: --health-cmd "cqlsh --debug" --health-interval 5s --health-retries 10
     steps:
       - name: checkout
         uses: actions/checkout@v3
