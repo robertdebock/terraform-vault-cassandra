@@ -17,13 +17,13 @@ variable "vault_cassandra_hosts" {
 
 variable "vault_cassandra_username" {
   description = "The username to authenticate with."
-  default     = "vaultuser"
+  default     = "cassandra"
   type        = string
 }
 
 variable "vault_cassandra_password" {
   description = "The password to authenticate with."
-  default     = "vaultpass"
+  default     = "cassandra"
   type        = string
 }
 
