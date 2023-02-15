@@ -49,11 +49,11 @@ jobs:
         with:
           action: plan
           directory: ./examples/${{ matrix.config.name }}
-      # - name: Wait for cassandra
-      #   uses: ifaxity/wait-on-action@v1
-      #   with:
-      #     resource: cassandra:9042
-      #     timeout: 60000
+      - name: Wait for cassandra
+        uses: ifaxity/wait-on-action@v1
+        with:
+          resource: cassandra:9042
+          timeout: 10000
       - name: terraform apply
         uses: robertdebock/terraform-action@1.1.2
         with:
