@@ -40,7 +40,7 @@ jobs:
           action: validate
           directory: ./examples/${{ matrix.config.name }}
       - name: Wait up to 16 seconds for service container cassandra to be ready
-        uses: ifaxity/wait-on-action
+        uses: ifaxity/wait-on-action@v1
         with:
           resource: tcp://cassandra:7000
           timeout: 16000
