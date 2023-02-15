@@ -25,11 +25,7 @@ jobs:
       cassandra:
         image: cassandra
         ports:
-          # - 7000:7000
-          # - 7001:7001
-          # - 7199:7199
           - 9042:9042
-          # - 9160:9160
     steps:
       - name: checkout
         uses: actions/checkout@v3
@@ -42,16 +38,6 @@ jobs:
         with:
           action: validate
           directory: ./examples/${{ matrix.config.name }}
-      # - name: Wait up to 32 seconds for service container vault to be ready
-      #   uses: ifaxity/wait-on-action@v1
-      #   with:
-      #     resource: tcp://vault:8200
-      #     timeout: 32000
-      # - name: Wait up to 32 seconds for service container cassandra to be ready
-      #   uses: ifaxity/wait-on-action@v1
-      #   with:
-      #     resource: tcp://cassandra:7000
-      #     timeout: 32000
       - name: terraform plan
         uses: robertdebock/terraform-action@1.1.2
         with:
