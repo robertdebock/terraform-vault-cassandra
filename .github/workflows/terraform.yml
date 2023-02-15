@@ -57,6 +57,8 @@ jobs:
         with:
           action: plan
           directory: ./examples/${{ matrix.config.name }}
+      - name: wait
+        run: sleep 60
       - name: terraform apply
         uses: robertdebock/terraform-action@1.1.2
         with:

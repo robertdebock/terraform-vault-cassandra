@@ -32,7 +32,7 @@ variable "vault_cassandra_port" {
   default     = 9042
   type        = number
   validation {
-    condition = var.vault_cassandra_port > 0 && var.vault_cassandra_port < 65537
+    condition     = var.vault_cassandra_port > 0 && var.vault_cassandra_port < 65537
     error_message = "Please use a TCP port between 0 and 65536."
   }
 }
@@ -71,7 +71,7 @@ variable "vault_cassandra_connect_timeout" {
   default     = 10
   type        = number
   validation {
-    condition = var.vault_cassandra_connect_timeout >= 0 && var.vault_cassandra_connect_timeout <= 600
+    condition     = var.vault_cassandra_connect_timeout >= 0 && var.vault_cassandra_connect_timeout <= 600
     error_message = "Please use a value of 0 to 600."
   }
 }
