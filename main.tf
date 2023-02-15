@@ -1,11 +1,14 @@
 resource "vault_database_secrets_mount" "default" {
-  path = var.vault_cassandra_path
+  path  = var.vault_cassandra_path
+  local = false
   cassandra {
+    allowed_roles    = var.vault_cassandra_name
     name             = var.vault_cassandra_name
     hosts            = var.vault_cassandra_hosts
     username         = var.vault_cassandra_username
     password         = var.vault_cassandra_password
     port             = var.vault_cassandra_port
+    plugin           = "cassandra-database-plugin"
     tls              = var.vault_cassandra_tls
     insecure_tls     = var.vault_cassandra_insecure_tls
     pem_bundle       = var.vault_cassandra_pem_bundle
