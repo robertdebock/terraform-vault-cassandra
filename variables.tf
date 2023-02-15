@@ -29,7 +29,7 @@ variable "vault_cassandra_password" {
 
 variable "vault_cassandra_port" {
   description = "The default port to connect to if no port is specified as part of the host."
-  default     = 7000
+  default     = 9042
   type        = number
   validation {
     condition = var.vault_cassandra_port > 0 && var.vault_cassandra_port < 65537
