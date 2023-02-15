@@ -39,6 +39,8 @@ jobs:
         with:
           action: validate
           directory: ./examples/${{ matrix.config.name }}
+      - name: Wait 16 seconds for service containers to be ready
+        run: sleep 16
       - name: terraform plan
         uses: robertdebock/terraform-action@1.1.2
         with:
