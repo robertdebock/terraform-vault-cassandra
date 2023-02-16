@@ -51,11 +51,11 @@ jobs:
       - name: Import Secrets
         uses: hashicorp/vault-action@v2
         with:
-          url: http://vault:8200
+          url: "http://vault:8200"
           token: "simple"
           secrets: |
-            db/creds/my_role username ;
-            db/creds/my_role password
+            db/creds/my_role username | CASSANDRA_USERNAME ;
+            db/creds/my_role password | CASSANDRA_PASSWORD
       - name: Run terraform destroy
         uses: robertdebock/terraform-action@1.1.2
         with:
