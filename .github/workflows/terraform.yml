@@ -24,8 +24,6 @@ jobs:
           - 8200:8200
       cassandra:
         image: robertdebock/cassandra
-        ports:
-          - 9042:9042
     steps:
       - name: Checkout
         uses: actions/checkout@v3
