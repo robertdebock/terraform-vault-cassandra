@@ -53,7 +53,9 @@ jobs:
         with:
           url: http://vault:8200
           token: "simple"
-          secrets: db/creds/my_role my_role
+          secrets: |
+            db/creds/my_role username ;
+            db/creds/my_role password
       - name: Run terraform destroy
         uses: robertdebock/terraform-action@1.1.2
         with:
