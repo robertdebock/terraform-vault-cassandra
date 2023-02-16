@@ -45,7 +45,7 @@ variable "vault_cassandra_tls" {
 
 variable "vault_cassandra_insecure_tls" {
   description = "Whether to skip verification of the server certificate when using TLS."
-  default     = true
+  default     = false
   type        = bool
 }
 
