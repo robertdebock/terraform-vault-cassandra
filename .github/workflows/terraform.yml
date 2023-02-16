@@ -23,15 +23,9 @@ jobs:
         ports:
           - 8200:8200
       cassandra:
-        image: cassandra
+        image: robertdebock/cassandra
         ports:
           - 9042:9042
-        options: >-
-          --health-cmd "(cqlsh --execute \"SHOW HOST\") > /dev/null && exit 0 || exit 1"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 17
-          --health-start-period 30s
     steps:
       - name: Checkout
         uses: actions/checkout@v3
