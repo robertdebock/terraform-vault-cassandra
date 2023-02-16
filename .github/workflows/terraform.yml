@@ -50,12 +50,6 @@ jobs:
           directory: ./examples/${{ matrix.config.name }}
         env:
           TF_CLI_ARGS: "-input=false -auto-approve"
-      - name: Consume a secret
-        uses: hashicorp/vault-action@v2
-        with:
-          url: http://vault:8200
-          token: "simple"
-          secrets: db/cassandra cassandra
       - name: Run terraform destroy
         uses: robertdebock/terraform-action@1.1.2
         with:
