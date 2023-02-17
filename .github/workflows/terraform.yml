@@ -48,16 +48,18 @@ jobs:
           directory: ./examples/${{ matrix.config.name }}
         env:
           TF_CLI_ARGS: "-input=false -auto-approve"
-      - name: Import Secrets
-        uses: hashicorp/vault-action@v2
-        with:
-          url: "http://vault:8200"
-          token: "simple"
-          role: my_role
-          path: db
-          secrets: |
-            db/creds/my_role username | CASSANDRA_USERNAME ;
-            db/creds/my_role password | CASSANDRA_PASSWORD
+      - name: Get a secret
+        run: |
+          sudo apt update
+          sudo apt install gpg
+          wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+          echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+          sudo apt update
+          sudo apt vault
+          vault read db/creds/my_role
+        env:
+          VAULT_ADDR: "http://vault:8200"
+          VAULT_TOKEN: "simple"
       - name: Run terraform destroy
         uses: robertdebock/terraform-action@1.1.2
         with:
