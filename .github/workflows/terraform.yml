@@ -53,6 +53,8 @@ jobs:
         with:
           url: "http://vault:8200"
           token: "simple"
+          role: my_role
+          path: db
           secrets: |
             db/creds/my_role username | CASSANDRA_USERNAME ;
             db/creds/my_role password | CASSANDRA_PASSWORD
