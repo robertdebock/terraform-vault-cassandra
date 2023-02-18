@@ -62,6 +62,12 @@ jobs:
           sudo apt update
           echo "Install Vault."
           sudo apt install vault
+          echo "Show /etc/hosts"
+          cat /etc/hosts
+          echo "Show /etc/resolv.conf"
+          cat /etc/resolv.conf
+          echo "Getent stuff"
+          getent hosts vault
           echo "Try resolving vault"
           ping -c 3 vault || echo "Nope."
           echo "Try reading a secret."
