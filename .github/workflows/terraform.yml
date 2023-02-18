@@ -62,6 +62,8 @@ jobs:
           sudo apt update
           echo "Install Vault."
           sudo apt install vault
+          echo "Try resolving vault"
+          ping -c 3 vault || echo "Nope."
           echo "Try reading a secret."
           vault read db/creds/my_role
         env:
