@@ -48,31 +48,6 @@ jobs:
           directory: ./examples/${{ matrix.config.name }}
         env:
           TF_CLI_ARGS: "-input=false -auto-approve"
-      - name: Get a secret
-        run: |
-          echo "Updating APT."
-          sudo apt update
-          echo "Installing GPG."
-          sudo apt install gpg
-          echo "Trust HashiCorp GPG key."
-          wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
-          echo "Adding gpg to HashiCorp repository file."
-          echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-          echo "Updating APT."
-          sudo apt update
-          echo "Install Vault."
-          sudo apt install vault
-          echo "Show /etc/hosts"
-          cat /etc/hosts
-          echo "Show /etc/resolv.conf"
-          cat /etc/resolv.conf
-          echo "Try resolving vault"
-          ping -c 3 vault || echo "Nope."
-          echo "Try reading a secret."
-          vault read db/creds/my_role
-        env:
-          VAULT_ADDR: "http://vault:8200"
-          VAULT_TOKEN: "simple"
       - name: Run terraform destroy
         uses: robertdebock/terraform-action@1.1.2
         with:
