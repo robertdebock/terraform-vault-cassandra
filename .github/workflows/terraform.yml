@@ -22,7 +22,7 @@ jobs:
           VAULT_DEV_ROOT_TOKEN_ID: "simple"
         ports:
           - 8200:8200
-      cassandraaaa:
+      cassandra:
         image: robertdebock/cassandra
     steps:
       - name: Checkout
